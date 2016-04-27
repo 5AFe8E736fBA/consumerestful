@@ -7,7 +7,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 /**
- * Created by mscs on 4/21/16.
+ * Created by mscs on 4/21/16
  *     long id;
  String message;
  */
