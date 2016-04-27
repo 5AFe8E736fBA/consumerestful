@@ -1,3 +1,6 @@
+package w3102931.example.com.consumerestful;
+
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Message;
@@ -21,9 +24,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import java.io.IOException;
 import java.io.InputStream;
 
-import w3102931.example.com.consumerestful.R;
+//import w3102931.example.com.consumerestful.R;
 
-package w3102931.example.com.consumerestful;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -163,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         HttpPost post = new HttpPost(baseURL);
 
                         message = new Message();
-                        message.id = String.parseLong(params[1]);
+                        message.id = Long.parseLong(params[1]);
                         message.latitude = params[2];
                         message.longitude = params[3];
                         message.timestamp = params[4];
@@ -191,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         StringEntity putString = null;
 
                         message = new Message();
-                        message.message = params[2];
+                        message.id = params[2];
                         putString = new StringEntity(gson.toJson(message));
 
                         put.setEntity(putString);
