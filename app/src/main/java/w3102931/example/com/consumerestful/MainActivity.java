@@ -3,8 +3,9 @@ package w3102931.example.com.consumerestful;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Message;
+//import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -142,12 +143,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             try {
 
+                //hardcode username 'user' and password 'password
+                //String auth = "user:password"; //authentication
+                //auth = Base64.encodeToString(auth.getBytes(), Base64.NO_WRAP); //authentication
+                //auth = "Basic" + auth; //authentication
+
                 // handle request
                 switch (params[0]) {
                     case "GET":
 
                         // set up and execute a get request
                         HttpGet httpGet = new HttpGet(baseURL + "/" + params[1]);
+
+                        //set basic authentication
+                        //httpGet.setHeader(H)//authentication
                         HttpResponse response = httpClient.execute(httpGet);
                         HttpEntity entity = response.getEntity();
 
@@ -165,10 +174,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         HttpPost post = new HttpPost(baseURL);
 
                         message = new Message();
-                        message.id = Long.parseLong(params[1]);
-                        message.latitude = params[2];
-                        message.longitude = params[3];
-                        message.timestamp = params[4];
+                        //Lab 4 POST method starts here
+
+                        message.setId(Long.parseLong(params[1]));
+                        message.setLatitude(Double.parseDouble(params[2]));
+                        message.setLongitude(Double.parseDouble(params[3]));
+                        message.setTimestamp(Long.parseLong(params[4]), System.currentTimeMillis());
 
 
                         // create a post message. Note that Gson is being used to convert a message object to json
@@ -193,7 +204,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         StringEntity putString = null;
 
                         message = new Message();
-                        message.id = params[2];
+                        //Lab 4 PUT method starts here
+                        message.setId(Long.parseLong(params[1]));
+                        message.setLatitude(Double.parseDouble(params[2]));
+                        message.setLongitude(Double.parseDouble(params[3]));
+
                         putString = new StringEntity(gson.toJson(message));
 
                         put.setEntity(putString);

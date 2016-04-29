@@ -1,11 +1,5 @@
 package w3102931.example.com.consumerestful;
 
-import android.location.Location;
-
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-
 /**
  * Created by mscs on 4/21/16..
  *     long id;
@@ -16,10 +10,10 @@ import org.apache.http.impl.client.DefaultHttpClient;
     public class Message {
 
 
-    public long id;
-    public double latitude;
-    public double longitude;
-    public long timestamp;
+    private long id;
+    private double latitude;
+    private double longitude;
+    private long timestamp;
 
 
         public Message() {
@@ -75,9 +69,10 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 
 
-        public static Message message(long id, double latitude, double longitude, long timestamp) {
-            return new Location(id, message.latitude, message.longitude, message.timestamp);
-    }
+       // public static Message message(long id, double latitude, double longitude, long timestamp, Object message) {
+
+         //   return new Location(id, message.latitude, message.longitude, message.timestamp);
+    //}
 
 }
 
